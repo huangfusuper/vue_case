@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+	</head>
+	
+	<script src="../js/vue.js"></script>
+	
+	<body>
+		<div id="app">
+			<span v-if="isShow">{{message}}</span>
+			<span v-else>asdasdsad</span>
+			<button type="button" @click="clickBtn">asdasdsa</button>
+		</div>
+	</body>
+	
+	<script>
+		// let:定义变量
+		// const：定义常量
+		const vue = new Vue({
+			//指定管理的元素
+			el: '#app',
+			//定义页面所需要的数据
+			data: {
+				message: '你好，Vue',
+				isShow:true
+			},
+			methods:{
+				clickBtn(){
+					this.isShow = !this.isShow
+				}
+			}
+		})
+	</script>
+</html>

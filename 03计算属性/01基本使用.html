@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+	</head>
+	
+	<script src="../js/vue.js"></script>
+	
+	<body>
+		<div id="app">
+			<h2>{{name}} {{message}}</h2>
+			
+			<h2>{{name +' ' + message}}</h2>
+			
+			<h2>{{getFullName()}}</h2>
+			
+			<h2>{{fullName}}</h2>
+		</div>
+	</body>
+	
+	<script>
+		// let:定义变量
+		// const：定义常量
+		const vue = new Vue({
+			//指定管理的元素
+			el: '#app',
+			//定义页面所需要的数据
+			data: {
+				name:'皇甫科星',
+				message: '你好，Vue'
+			},
+			methods:{
+				getFullName:function(){
+					return this.name + ' ' + this.message;
+				}
+			},
+			computed:{
+				/* 
+				 * 计算属性直接返回的是一个属性
+				 */
+				fullName: function(){
+					return this.name + ' ' + this.message;
+				}
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="../js/vue.js"></script>
+	<body>
+		<div id="app">
+			<h1 v-once>{{message}}</h1>
+		</div>
+	</body>
+	<!-- v-once: 后续操作不允许更改html数据 -->
+	<script>
+		const vue =new Vue({
+			el: '#app',
+			data: {
+				message: 'hahaha'
+			}
+		});
+	</script>
+</html>

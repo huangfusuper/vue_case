@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Title</title>
+	</head>
+	
+	<script src="../js/vue.js"></script>
+	
+	<body>
+		<div id="app">
+			<h2>总价格：{{priceCountMethod()}}</h2>
+			<h2>总价格：{{priceCount}}</h2>
+		</div>
+	</body>
+	
+	<script>
+		// let:定义变量
+		// const：定义常量
+		const vue = new Vue({
+			//指定管理的元素
+			el: '#app',
+			//定义页面所需要的数据
+			data: {
+				books: [
+					{id: 110, name:'Netty权威指南', price: 119},
+					{id: 111, name:'Netty入门', price: 666},
+					{id: 112, name:'存在与虚无', price: 555},
+					{id: 113, name:'山海经', price: 222},
+					{id: 114, name:'本草纲目', price: 3333},
+					{id: 115, name:'星辰变', price: 444},
+				],
+			},
+			methods:{
+				priceCountMethod: function(){
+					let priceCount = 0;
+					for(let book of this.books) {
+						priceCount = priceCount + book.price
+					}
+					return priceCount
+				}
+			},
+			computed:{
+				priceCount: function(){
+					let priceCount = 0;
+					for(let book of this.books) {
+						priceCount = priceCount + book.price
+					}
+					return priceCount
+				}
+			}
+		})
+	</script>
+</html>

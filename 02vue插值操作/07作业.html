@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+	<style>
+		.active {
+			color: red;
+		}
+	</style>
+	<script src="../js/vue.js"></script>
+	<body>
+		<div id="app">
+			<ol>
+				<li :class="{active: activeIndex==index}" v-for="(item, index) in movies" @click="activeClick(index)">
+					{{item}}
+				</li>
+			</ol>
+		</div>
+	</body>
+	
+	<script>
+		const vue = new Vue({
+			el: '#app',
+			data: {
+				movies: ['夏洛特烦恼','刺杀小说家','唐人街探案','复仇者联盟','新神榜：哪吒归来','弑神令'],
+				activeIndex: 0
+			},
+			methods: {
+				activeClick:function(docm){
+					console.log(docm)
+					this.activeIndex = docm
+				}
+				
+			}
+		});
+	</script>
+</html>
