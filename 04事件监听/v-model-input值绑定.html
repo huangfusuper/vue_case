@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="../js/vue.js"></script>
+	<body>
+		<div id="app">
+			<label v-for="item in arrayList" :for="item">
+				<input type="checkbox" :id="item" :value="item" v-model="checkList" />{{item}}
+			</label>
+			
+			<h2>{{checkList}}</h2>
+		</div>
+	</body>
+	
+	<script>
+		const vue =  new Vue({
+			el: '#app',
+			data: {
+				arrayList:['a','b','c','d'],
+				checkList:[]
+			}
+		});
+	</script>
+</html>

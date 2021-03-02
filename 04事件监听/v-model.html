@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="../js/vue.js"></script>
+	<body>
+		
+		<div id="app">
+			<label for="male">
+				<input type="radio" name="sex" value="男" v-model="sex" />男
+			</label>
+			
+			<label for="female">
+				<input type="radio" id="female" value="女" v-model="sex" />女
+			</label>
+			
+			<h2>
+				{{sex}}
+			<h2>
+				
+			<br>
+			
+			<label for="xieyi">
+				<input type="checkbox" id="xieyi" v-model="checkboxValue" />同意协议
+			</label>
+			<button type="button" :disabled="!checkboxValue">是否勾选</button>
+			<h2>您选择的是： {{checkboxValue}}</h2>
+			
+			<br>
+			<label for="篮球">
+				<input type="checkbox" id="篮球" value="篮球"  v-model="checkboxArray" />篮球
+			</label>
+			
+			
+			<label for="羽毛球">
+				<input type="checkbox" id="羽毛球" value="羽毛球" v-model="checkboxArray"  />羽毛球
+			</label>
+			
+			
+			<label for="乒乓球">
+				<input type="checkbox" id="乒乓球"  value="乒乓球" v-model="checkboxArray"  />乒乓球
+			</label>
+			
+			<h2>爱好是：{{checkboxArray}}</h2>
+			
+			<hr>
+			
+			<select name="abc" v-model="selectValue">
+				<option value="苹果">苹果</option>
+				<option value="香蕉">香蕉</option>
+				<option value="火龙果">火龙果</option>
+				<option value="辣条">辣条</option>
+				<option value="樱桃">樱桃</option>
+			</select>
+			<h2>您选择的水果是:{{selectValue}}</h2>
+		</div>
+	</body>
+	
+	<script>
+		const vue = new Vue({
+			el: '#app',
+			data: {
+				message: '你好',
+				sex: '男',
+				checkboxValue:false,
+				checkboxArray:[],
+				selectValue:'火龙果'
+			}
+		});
+	</script>
+</html>
