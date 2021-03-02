@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+			<cpn>
+				<template slot-scope="slot">
+					<span>{{slot.lu.join('-')}}</span>
+				</template>
+			</cpn>
+			<cpn>
+				<template slot-scope="slot">
+					<span>{{slot.lu.join(';;')}}</span>
+				</template>
+			</cpn>
+			<cpn>
+				<template slot-scope="slot">
+					<span>{{slot.lu.join('||')}}</span>
+				</template>
+			</cpn>
+		</div>
+	</body>
+	
+	<template id = "cpnId">
+		<div>
+			<ol>
+				<slot :lu="lu"><li v-for="item in lu">{{item}}</li></slot>
+				
+			</ol>
+		</div>
+	</template>
+	
+	<script src="../js/vue.js"></script>
+	<script>
+		const vue = new Vue({
+			el: '#app',
+			components:{
+				cpn:{
+					template:'#cpnId',
+					data(){
+						return {
+							lu:['java','go','python','c','c++','vue']
+						}
+					}
+					
+				}
+			}
+		});
+	</script>
+</html>

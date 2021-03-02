@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn :number1="num1"
+				 :number2="num2"
+				 @num1_input="num1_change"
+				 @num2_input="num2_change"/>
+		</div>
+		
+		
+	</body>
+	
+	<template id="cpnId">
+		<div>
+			<h1>data:  {{dnumber1}}</h1>
+			<h1>props:  {{number1}}</h1>
+			<input type="text" :value="dnumber1" @input="num1_input_ac"/>
+			<h1>data:  {{dnumber2}}</h1>
+			<h1>props:  {{number2}}</h1>
+			<input type="text" :value="dnumber2"  @input="num2_input_ac"/>
+		</div>
+	</template>
+	
+	<script src="../js/vue.js"></script>
+	<script>
+		
+		const cpnObj = {
+			template: '#cpnId',
+			props:{
+				number1:Number,
+				number2:Number
+			},
+			data(){
+				return {
+					dnumber1:this.number1,
+					dnumber2:this.number2
+				}
+			},
+			methods:{
+				num1_input_ac(event){
+					this.dnumber1=event.target.value
+					this.$emit('num1_input',this.dnumber1)
+					this.dnumber2 = this.dnumber1*100
+					this.$emit('num2_input',this.dnumber2)
+				},
+				num2_input_ac(event){
+					this.dnumber2=event.target.value
+					this.$emit('num2_input',this.dnumber2)
+				}
+			}
+		}
+		
+		const vue = new Vue({
+			el:'#app',
+			data:{
+				num1:0,
+				num2:0
+			},
+			methods:{
+				num1_change(value){
+					this.num1 = value *1
+				},
+				num2_change(value){
+					this.num2 = value*1
+				}
+			},
+			components:{
+				cpn:cpnObj
+			}
+		});
+	</script>
+</html>

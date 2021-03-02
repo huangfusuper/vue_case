@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 监听子组件的加减事件 -->
+			<cpn :cmessage="message" :child_count="count" @child_add="add" @child_sub="sub()"></cpn>
+		</div>
+	</body>
+	
+	<template id="cpnId">
+		<div>
+			<button @click="child_sub" type="button">-</button>
+			{{child_count}} 
+			
+			<button @click="child_add" type="button">+</button>
+			<br>
+			{{cmessage}}
+		</div>
+	</template>
+	
+	<script src="../js/vue.js"></script>
+	<script type="text/javascript">
+		
+		const cpnObj = {
+			template: "#cpnId",
+			props:{
+				child_count:Number,
+				cmessage:String
+			},
+			methods:{
+				child_add(){
+					//发布事件
+					this.$emit('child_add');
+				},
+				child_sub(){
+					//发布事件
+					this.$emit('child_sub');
+				}
+			}
+		}
+		
+		const vue = new Vue({
+			el:'#app',
+			data:{
+				count:0,
+				message:'这个的精髓在于，子组件正常的开发功能，当触发某些事件的时候，向外发布一个事件，通过this.$emit("事件名称"),父组件监听发布的事件，同时触发本身的事件@子事件名称="父事件名称"，组件触发自己的事件后将完成的值，重新绑定到子组件上（:子组件值名称=父组件值名称），子组件内部定义props[变量名]来接收父组件传递的值'
+			},
+			methods:{
+				add(){
+					this.count++
+				},
+				sub(){
+					this.count--
+				}
+			},
+			components:{
+				cpn:cpnObj
+			}
+		});
+	</script>
+</html>

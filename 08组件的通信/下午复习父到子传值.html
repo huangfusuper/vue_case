@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 父到子传值 -->
+			<cpn :child_message="message"></cpn>
+		</div>
+		
+		<template id="cpnId">
+			<div>
+				<h1>{{child_message}}</h1>
+				<h2>皇甫</h2>
+				<p>组件间的传值，需要在子组件声明接收的值！其次在父组件定义好要传递的值！</p>
+				<p>在标签中使用 v-bind指令将父组件的数据绑定到子组件的 变量上</p>
+				<p>需要注意的是，自组件中生命的data必须是一个函数，返回一个对象，这么设计的原因是因为子组件的每一个实例都必须创建一个全新的对象，防止组件之间的数据相互影响</p>
+			</div>
+		</template>
+	</body>
+	
+	<script src="../js/vue.js"></script>
+	<script type="text/javascript">
+		
+		const cpnObject = {
+			template:'#cpnId',
+			props:{
+				child_message:String
+			}
+		}
+		
+		const vue = new Vue({
+			el:'#app',
+			data:{
+				message:'huangfu'
+			},
+			components:{
+				cpn:cpnObject
+			}
+		});
+	</script>
+</html>
