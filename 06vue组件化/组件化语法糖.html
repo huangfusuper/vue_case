@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script src="../js/vue.js"></script>
+	<body>
+		<div id="app">
+			<cpn></cpn>
+		</div>
+	</body>
+	
+	<script>
+		
+		//传统写法
+		//定义组件
+		// const myC1 = Vue.extend({
+		// 	template: `
+		// 		<div><h2>传统写法</h2></div>
+		// 	`
+		// });
+		//语法糖
+		Vue.component("cpn1", {
+			template:'<div><h2>传统写法</h2></div>'
+		})
+		
+		const vue = new Vue({
+			el: '#app',
+			components:{
+				//cpn: myC1
+				cpn: {
+					template: '<div><h2>传统写法</h2></div>'
+				}
+			}
+		});
+	</script>
+</html>

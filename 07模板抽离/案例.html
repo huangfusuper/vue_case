@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn></cpn>
+			<cpn></cpn>
+		</div>
+		
+	</body>
+	
+	<template id="cpn">
+		<div>
+			<button @click="sub()" type="button">-</button>
+			{{count}}
+			<button @click="add()" type="button">+</button>
+		</div>
+	</template>
+	
+	<script src="../js/vue.js"></script>
+	<script>
+		Vue.component("cpn",{
+			template: '#cpn',
+			/* 函数的原因：不同的组件是不同的实例，不能共用一个data对象，于是data是个函数，每次返回一个新的对象
+			 * 一个对象的修改不应该另外一个data对象
+			 */
+			data() {
+				return {
+					count:0
+				}
+			},
+			methods:{
+				add(){
+					this.count++
+				},
+				sub(){
+					this.count--
+				}
+			}
+		})
+		
+		const vue = new Vue({
+			el: '#app'
+		});
+	</script>
+</html>

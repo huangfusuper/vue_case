@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn :cmovies="movies" :cmessage="message"></cpn>
+		</div>
+	</body>
+	
+	<template id="cpnId">
+		<div>
+			<h2>组件标题</h2>
+			<p>组件内容</p>
+			<h2>{{cmovies}}</h2>
+			<p>{{cmessage}}</p>
+			<p>{{cdefault}}</p>
+		</div>
+	</template>
+	
+	<script src="../js/vue.js"></script>
+	
+	<script>
+		//注册全局组件
+		const cpn = {
+			template: '#cpnId',
+			//props:['cmovies','cmessage'],
+			props:{
+				cmovies:Array,
+				cmessage:String,
+				cdefault:{
+					type:String,
+					default:'huangfu',
+					required:true
+				}
+			},
+			data(){
+				return {}
+			}
+		}
+		const vue = new Vue({
+			el: '#app',
+			data:{
+				movies:["海王","海贼王","星际穿越"],
+				message:'huangfu',
+				adefault:'default'
+			},
+			components: {
+				cpn
+			}
+		});
+	</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+	<script type="text/x-template" id="cpn">
+		<div>
+			<h2>我是分离的写法的组件</h2>
+			<p>我是文章</p>
+		</div>
+	</script>
+	
+	
+	<template id="template">
+		<div>
+			<h2>我是分离的写法的组件  template 组件的代码</h2>
+			<p>templatetemplatetemplatetemplatetemplatetemplatetemplate</p>
+		</div>
+	</template>
+	
+	<body>
+		<div id="app">
+			<cpn_quanju></cpn_quanju>
+			<cpn></cpn>
+			
+			<tem></tem>
+			<tem></tem>
+			<tem></tem>
+			<tem></tem>
+			<tem></tem>
+			<tem></tem>
+			<tem></tem>
+		</div>
+	</body>
+	
+	<script src="../js/vue.js"></script>
+	
+	<script>
+		//注册一个全局组件
+		Vue.component("cpn_quanju",{
+			template: '<h2>全局组件，传统写法</h2>'
+		})
+		
+		Vue.component("cpn",{
+			template: "#cpn"
+		})
+		
+		Vue.component("tem",{
+			template: "#template"
+		})
+		
+		const vue = new Vue({
+			el: '#app'
+		});
+	</script>
+</html>
